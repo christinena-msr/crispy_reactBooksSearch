@@ -1,0 +1,24 @@
+{
+  "name": "crispy_reactbookssearch",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crispysodium/crispy_reactBooksSearch.git"
+  },
+  "author": "crispysodium",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crispysodium/crispy_reactBooksSearch/issues"
+  },
+  "homepage": "https://github.com/crispysodium/crispy_reactBooksSearch#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.18"
+  }
+}
