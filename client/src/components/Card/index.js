@@ -1,7 +1,18 @@
-import React from "react";
-import { PromiseProvider } from "mongoose";
+import React, { useEffect, useRef } from "react";
+import API from "../../utils/API";
+import { useStoreContext } from "../../utils/GlobalState";
+import { ADD_BOOK, REMOVE_BOOK } from "../../utils/actions";
 
 function Card(props) {
+
+    const [state, dispatch] = useStoreContext();
+
+    useEffect(() => {
+        // get all saved books from database
+        API.getBooks()
+            .then(res => dispatch({books: res.data}));
+    }, []);
+
     return (
         <div className="box">
             <article className="media">
@@ -17,8 +28,8 @@ function Card(props) {
                                 <p>
                                 <strong>{props.title}</strong>
                                 <br></br>
-                                <p>Authors: {props.authors.toString()}</p>
-                                    Descroption: {props.description}
+                                <p>Authors: {props.authors.length === 0 ? "" : props.authors.toString()}</p>
+                                    Description: {props.description}
                                 </p>
                             </div>
                         </div>
@@ -28,7 +39,10 @@ function Card(props) {
                                     <a className="button is-info" href={props.link} target="_blank">View</a>
                                 </div>
                                 <div className="control">
-                                    <button className="button is-info is-light is-outlined">Save</button>
+                                    <button className="button is-info is-light is-outlined" ref={props.ref} onClick={props.onClick}>Save</button>
+                                </div>
+                                <div className="control">
+                                    <button className="button is-danger" ref={props.ref} onClick={props.onClick}>Delete</button>
                                 </div>
                             </div>
                         </div>
